@@ -1,25 +1,18 @@
-import logo from "./logo.svg";
 import "./App.css";
+import MyComponents from "./03/MyComponents";
+import MycomponentsClass from "./03/MycomponentsClass";
+import CounterClass from "./03/CounterClass";
+import Say from "./03/Say";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MyComponents name={'test'}>나는 children 이다</MyComponents>
+      <MycomponentsClass name={'클래스 형'}>클래스 child</MycomponentsClass>
+      <CounterClass/>
+      <Say/>
     </div>
-  );
+  )
 }
 
 export default App;
