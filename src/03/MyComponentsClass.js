@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class MycomponentsClass extends Component {
+class MyComponentsClass extends Component {
   static defaultProps = {
     name: "기본 이름",
   };
@@ -21,4 +21,4 @@ class MycomponentsClass extends Component {
   }
 }
 
-export default MycomponentsClass;
+export default MyComponentsClass;
