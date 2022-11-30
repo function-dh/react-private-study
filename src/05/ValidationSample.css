@@ -1,0 +1,15 @@
+.success{
+  background-color: lightgreen;
+}
+.fail{
+  background: lightcoral;
+}
+
+.btn{
+  width: 120px;
+  height: 70px;
+  background: lightpink;
+  font-weight: bold;
+  border: 1px solid pink;
+  border-radius: 12px;
+}
