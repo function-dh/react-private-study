@@ -8,6 +8,8 @@ import EventPractice from "./04/EventPractice";
 import ValidationSampleClass from "./05/ValidationSampleClass";
 import React, { Component } from "react";
 import InterationSample from "./06/InterationSample";
+import LifeCycleSampleClass from "./07/LifeCycleSampleClass";
+import ErrorBoundary from "./07/ErrorBoundary";
 
 // class App extends Component {
 //   validation = React.createRef();
@@ -24,19 +26,46 @@ import InterationSample from "./06/InterationSample";
 //   }
 // }
 
-function App() {
-  return (
-    <div>
-      <InterationSample/>
-      {/*<ValidationSampleClass />*/}
-      {/*<EventPractice />*/}
-      {/*<EventPracticeClass />*/}
-      {/*<MyComponents name={"test"}>나는 children 이다</MyComponents>*/}
-      {/*<MyComponentsClass name={"클래스 형"}>클래스 child</MyComponentsClass>*/}
-      {/*<CounterClass />*/}
-      {/*<Say />*/}
-    </div>
-  );
+// function App() {
+//   return (
+//     <div>
+//       <InterationSample/>
+//       {/*<ValidationSampleClass />*/}
+//       {/*<EventPractice />*/}
+//       {/*<EventPracticeClass />*/}
+//       {/*<MyComponents name={"test"}>나는 children 이다</MyComponents>*/}
+//       {/*<MyComponentsClass name={"클래스 형"}>클래스 child</MyComponentsClass>*/}
+//       {/*<CounterClass />*/}
+//       {/*<Say />*/}
+//     </div>
+//   );
+// }
+
+// 7강 관련
+function getRandomColor() {
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+class App extends Component {
+  state = {
+    color: "#000000",
+  };
+  handleClick = () => {
+    this.setState({
+      color: getRandomColor(),
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>랜덤 색상</button>
+        <ErrorBoundary>
+          <LifeCycleSampleClass color={this.state.color} />
+        </ErrorBoundary>
+      </div>
+    );
+  }
 }
 
 export default App;
