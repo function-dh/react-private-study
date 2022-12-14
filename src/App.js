@@ -15,6 +15,7 @@ import CounterReducer from "./08/CounterReducer";
 import Info from "./08/Info";
 import Average from "./08/Average";
 import SassComponent from "./09/SassComponent";
+import StyledComponent from "./09/StyledComponent";
 
 // class App extends Component {
 //   validation = React.createRef();
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <div>
+      <StyledComponent/>
       <SassComponent />
       {/*<Average />*/}
       {/*<button onClick={()=>setVisible(!visible)}>{visible ? '숨기기' : '보이기'}</button>*/}

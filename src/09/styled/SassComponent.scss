@@ -1,11 +1,11 @@
-@import './utils.scss';
+@import '~include-media/dist/include-media';
 
 .SassComponent {
   display: flex;
   background: blanchedalmond;
-  //@include media("<768px") {
-  //  background: $oc-gray-9;
-  //}
+  @include media("<768px") {
+    background: black;
+  }
 
   .box {
     background: red; // 일반 CSS 에선 .SassComponent .box 와 마찬가지
