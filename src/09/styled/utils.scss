@@ -1,0 +1,10 @@
+@mixin square($size) {
+  width : 32px * $size;
+  height: 32px * $size;
+}
+
+$red : red;
+$orange: orange;
+$yellow: yellow;
+$green: green;
+$blue: blue;
