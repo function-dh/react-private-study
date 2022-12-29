@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component, useState } from 'react';
+import React, { Component, useCallback, useState, useRef } from 'react';
 import MyComponents from './03/MyComponents';
 import MyComponentsClass from './03/MyComponentsClass';
 import CounterClass from './03/CounterClass';
@@ -16,6 +16,9 @@ import Info from './08/Info';
 import Average from './08/Average';
 import SassComponent from './09/SassComponent';
 import StyledComponent from './09/StyledComponent';
+import TodoTemplate from './10/components/TodoTemplate';
+import TodoInsert from './10/components/TodoInsert';
+import TodoList from './10/components/TodoList';
 
 // class App extends Component {
 //   validation = React.createRef();
@@ -101,8 +104,64 @@ import StyledComponent from './09/StyledComponent';
 //
 
 // 10강 관련
+const todoList = [
+  {
+    id: 1,
+    text : '리액트 기초 알아보기',
+    checked : true
+  },
+  {
+    id : 2,
+    text : '컴포넌트 스타일링 해보기',
+    checked : true
+  },
+  {
+    id : 3,
+    text : '일정관리 테스트',
+    checked : false
+  }
+]
+
 const App = () => {
-  return <div>Todo app 기본 세팅</div>;
+  const [todos, setTodos] = useState(todoList);
+  const nextId = useRef(4);
+
+  const onInsert = useCallback(
+    (text) => {
+      const todo = {
+        id: nextId.current,
+        text,
+        checked: false
+      }
+      console.log(todo);
+      setTodos(todos.concat(todo))
+      nextId.current += 1
+    },
+    [todos],
+  );
+
+  const onRemove = useCallback(
+    (id) => {
+      setTodos(todos.filter(todo => todo.id !== id))
+    },
+    [todos],
+  );
+
+  const onToggle = useCallback(
+    (id) => {
+      setTodos(todos.map(todo =>
+        todo.id === id ? {...todo, checked: !todo.checked} : todo
+      ))
+    },
+    [todos],
+  );
+
+  return (
+    <TodoTemplate>
+      <TodoInsert onInsert={onInsert} />
+      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+    </TodoTemplate>
+  )
 };
 
 export default App;
