@@ -1,8 +1,8 @@
 import React from 'react';
-import './TodoList.scss'
+import './TodoList.scss';
 import TodoListItem from './TodoListItem';
 
-const TodoList = ({todos, onRemove, onToggle}) => {
+const TodoList = ({ todos, onRemove, onToggle }) => {
   return (
     <div className={'TodoList'}>
       {todos.map(todo => (
