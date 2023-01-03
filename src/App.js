@@ -104,26 +104,83 @@ import TodoList from './10/components/TodoList';
 //
 
 // 10강 관련
-const todoList = [
-  {
-    id: 1,
-    text : '리액트 기초 알아보기',
-    checked : true
-  },
-  {
-    id : 2,
-    text : '컴포넌트 스타일링 해보기',
-    checked : true
-  },
-  {
-    id : 3,
-    text : '일정관리 테스트',
-    checked : false
+// const todoList = [
+//   {
+//     id: 1,
+//     text : '리액트 기초 알아보기',
+//     checked : true
+//   },
+//   {
+//     id : 2,
+//     text : '컴포넌트 스타일링 해보기',
+//     checked : true
+//   },
+//   {
+//     id : 3,
+//     text : '일정관리 테스트',
+//     checked : false
+//   }
+// ]
+//
+// const App = () => {
+//   const [todos, setTodos] = useState(todoList);
+//   const nextId = useRef(4);
+//
+//   const onInsert = useCallback(
+//     (text) => {
+//       const todo = {
+//         id: nextId.current,
+//         text,
+//         checked: false
+//       }
+//       console.log(todo);
+//       setTodos(todos.concat(todo))
+//       nextId.current += 1
+//     },
+//     [todos],
+//   );
+//
+//   const onRemove = useCallback(
+//     (id) => {
+//       setTodos(todos.filter(todo => todo.id !== id))
+//     },
+//     [todos],
+//   );
+//
+//   const onToggle = useCallback(
+//     (id) => {
+//       setTodos(todos.map(todo =>
+//         todo.id === id ? {...todo, checked: !todo.checked} : todo
+//       ))
+//     },
+//     [todos],
+//   );
+//
+//   return (
+//     <TodoTemplate>
+//       <TodoInsert onInsert={onInsert} />
+//       <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+//     </TodoTemplate>
+//   )
+// };
+//
+// export default App;
+
+// 11강 관련
+function createBulkTodos(){
+  const array = []
+  for(let i =1; i <= 2500; i++){
+    array.push({
+      id: i,
+      text: `할일 ${i}`,
+      checked: false
+    })
   }
-]
+  return array
+}
 
 const App = () => {
-  const [todos, setTodos] = useState(todoList);
+  const [todos, setTodos] = useState(createBulkTodos);
   const nextId = useRef(4);
 
   const onInsert = useCallback(
@@ -133,8 +190,7 @@ const App = () => {
         text,
         checked: false
       }
-      console.log(todo);
-      setTodos(todos.concat(todo))
+      setTodos(todos => todos.concat(todo))
       nextId.current += 1
     },
     [todos],
@@ -142,16 +198,18 @@ const App = () => {
 
   const onRemove = useCallback(
     (id) => {
-      setTodos(todos.filter(todo => todo.id !== id))
+      setTodos(todos => todos.filter(todo => todo.id !== id))
     },
     [todos],
   );
 
   const onToggle = useCallback(
     (id) => {
-      setTodos(todos.map(todo =>
-        todo.id === id ? {...todo, checked: !todo.checked} : todo
-      ))
+      setTodos(todos =>
+        todos.map(todo =>
+          todo.id === id ? {...todo, checked: !todo.checked} : todo
+        )
+      )
     },
     [todos],
   );
