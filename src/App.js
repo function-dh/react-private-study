@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component, useCallback, useState, useRef } from 'react';
+import axios from 'axios'
 import produce from 'immer';
 import MyComponents from './03/MyComponents';
 import MyComponentsClass from './03/MyComponentsClass';
@@ -28,6 +29,7 @@ import Articles from './13/Articles';
 import Article from './13/Article';
 import Layout from './13/Layout';
 import NotFound from './13/NotFound';
+import NewsList from './14/src/compoenets/NewsList'
 
 // class App extends Component {
 //   validation = React.createRef();
@@ -312,22 +314,29 @@ import NotFound from './13/NotFound';
 // };
 
 // 13강 관련
+// const App = () => {
+//   return (
+//     <div>
+//       <Routes>
+//         <Route path='/' element={<Layout />}>
+//           <Route index element={<Home/>} />
+//           <Route path='/about' element={<About/>} />
+//           <Route path='/profiles/:username' element={<Profile/>} />
+//         </Route>
+//
+//         <Route path='/articles' element={<Articles/>} >
+//           <Route path=':id' element={<Article/>} />
+//         </Route>
+//         <Route path='*' element={<NotFound/>} />
+//       </Routes>
+//     </div>
+//   )
+// }
+
+// 14강 관련
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home/>} />
-          <Route path='/about' element={<About/>} />
-          <Route path='/profiles/:username' element={<Profile/>} />
-        </Route>
-
-        <Route path='/articles' element={<Articles/>} >
-          <Route path=':id' element={<Article/>} />
-        </Route>
-        <Route path='*' element={<NotFound/>} />
-      </Routes>
-    </div>
+    <NewsList/>
   )
 }
 
