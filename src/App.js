@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component, useCallback, useState, useRef } from 'react';
+import axios from 'axios'
 import produce from 'immer';
 import MyComponents from './03/MyComponents';
 import MyComponentsClass from './03/MyComponentsClass';
@@ -28,6 +29,9 @@ import Articles from './13/Articles';
 import Article from './13/Article';
 import Layout from './13/Layout';
 import NotFound from './13/NotFound';
+import NewsList from './14/src/compoenets/NewsList'
+import Categories from './14/src/compoenets/Categories';
+import NewsPage from './14/src/pages/NewsPage';
 
 // class App extends Component {
 //   validation = React.createRef();
@@ -312,22 +316,49 @@ import NotFound from './13/NotFound';
 // };
 
 // 13강 관련
+// const App = () => {
+//   return (
+//     <div>
+//       <Routes>
+//         <Route path='/' element={<Layout />}>
+//           <Route index element={<Home/>} />
+//           <Route path='/about' element={<About/>} />
+//           <Route path='/profiles/:username' element={<Profile/>} />
+//         </Route>
+//
+//         <Route path='/articles' element={<Articles/>} >
+//           <Route path=':id' element={<Article/>} />
+//         </Route>
+//         <Route path='*' element={<NotFound/>} />
+//       </Routes>
+//     </div>
+//   )
+// }
+
+// 14강 관련 - router 미적용
+// const App = () => {
+//   const [category, setCategory] = useState('all');
+//   const onSelect = useCallback((category) => {
+//       setCategory(category)
+//     }, [],
+//   );
+//
+//   return (
+//     <div>
+//       <Categories category={category} onSelect={onSelect}/>
+//       <NewsList category={category}  />
+//     </div>
+//   )
+// }
+
+// 14강 관련 - router 적용
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home/>} />
-          <Route path='/about' element={<About/>} />
-          <Route path='/profiles/:username' element={<Profile/>} />
-        </Route>
-
-        <Route path='/articles' element={<Articles/>} >
-          <Route path=':id' element={<Article/>} />
-        </Route>
-        <Route path='*' element={<NotFound/>} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<NewsPage />}>
+        <Route path=":category" element={<NewsPage />} />
+      </Route>
+    </Routes>
   )
 }
 
