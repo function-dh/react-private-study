@@ -30,6 +30,8 @@ import Article from './13/Article';
 import Layout from './13/Layout';
 import NotFound from './13/NotFound';
 import NewsList from './14/src/compoenets/NewsList'
+import Categories from './14/src/compoenets/Categories';
+import NewsPage from './14/src/pages/NewsPage';
 
 // class App extends Component {
 //   validation = React.createRef();
@@ -333,10 +335,30 @@ import NewsList from './14/src/compoenets/NewsList'
 //   )
 // }
 
-// 14강 관련
+// 14강 관련 - router 미적용
+// const App = () => {
+//   const [category, setCategory] = useState('all');
+//   const onSelect = useCallback((category) => {
+//       setCategory(category)
+//     }, [],
+//   );
+//
+//   return (
+//     <div>
+//       <Categories category={category} onSelect={onSelect}/>
+//       <NewsList category={category}  />
+//     </div>
+//   )
+// }
+
+// 14강 관련 - router 적용
 const App = () => {
   return (
-    <NewsList/>
+    <Routes>
+      <Route path="/" element={<NewsPage />}>
+        <Route path=":category" element={<NewsPage />} />
+      </Route>
+    </Routes>
   )
 }
 
