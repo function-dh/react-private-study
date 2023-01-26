@@ -32,6 +32,9 @@ import NotFound from './13/NotFound';
 import NewsList from './14/src/compoenets/NewsList'
 import Categories from './14/src/compoenets/Categories';
 import NewsPage from './14/src/pages/NewsPage';
+import ColorBox from './15/src/components/ColorBox';
+import ColorContext, {ColorProvider} from './15/src/contexts/color';
+import SelectColors from './15/src/components/SelectColors';
 
 // class App extends Component {
 //   validation = React.createRef();
@@ -352,13 +355,25 @@ import NewsPage from './14/src/pages/NewsPage';
 // }
 
 // 14강 관련 - router 적용
+// const App = () => {
+//   return (
+//     <Routes>
+//       <Route path="/" element={<NewsPage />}>
+//         <Route path=":category" element={<NewsPage />} />
+//       </Route>
+//     </Routes>
+//   )
+// }
+
+// 15강 - Context API
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<NewsPage />}>
-        <Route path=":category" element={<NewsPage />} />
-      </Route>
-    </Routes>
+    <ColorProvider>
+      <div>
+        <SelectColors/>
+        <ColorBox />
+      </div>
+    </ColorProvider>
   )
 }
 
